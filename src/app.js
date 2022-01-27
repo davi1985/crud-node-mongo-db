@@ -1,7 +1,13 @@
 const express = require('express');
 const path = require('path');
 
+const db = require('./database');
+const routes = require('./routes');
+
 const app = express();
+
+// database connection
+db.connect();
 
 // template engine
 app.set('view engine', 'ejs');
@@ -13,14 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 
 // routes
-app.get('/', (request, response) => {
-  const user = {
-    name: 'Fulano de tal',
-  };
-  return response.render('index', {
-    user,
-  });
-});
+app.use('/', routes);
 
 // 404 - not found
 app.use((request, response) => response.send('Page not found'));
