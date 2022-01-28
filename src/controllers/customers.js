@@ -68,4 +68,14 @@ async function edit(request, response) {
   });
 }
 
-module.exports = { add, index, listUsers, indexEdit, edit };
+async function remove(request, response) {
+  const { id } = request.params;
+
+  const remove = await CustomersModel.deleteOne({ _id: id });
+
+  if (remove.ok) {
+    return response.redirect('listUser');
+  }
+}
+
+module.exports = { add, index, listUsers, indexEdit, edit, remove };

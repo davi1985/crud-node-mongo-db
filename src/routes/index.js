@@ -16,4 +16,7 @@ router.get('/list', CustomerController.listUsers);
 router.get('/edit', CustomerController.indexEdit);
 router.post('/edit/:id', CustomerController.edit);
 
+// delete
+router.get('/remove/:id', CustomerController.remove);
+
 module.exports = router;

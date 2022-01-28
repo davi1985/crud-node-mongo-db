@@ -9,7 +9,9 @@
       <li>
         <strong><%= user.name %></strong>, <%= user.email %>, <%= user.age %>
         anos
-        <a href="/edit?id=<%= user._id %> ">[Editar]</a>
+        <!--  -->
+        <a href="/edit?id=<%= user._id %> ">[Editar]</a> -
+        <a href="/remove/<%= user._id %> ">[Excluir]</a>
       </li>
       <% }) %>
     </ul>
