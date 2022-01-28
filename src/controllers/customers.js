@@ -22,7 +22,10 @@ async function add(request, response) {
 
   register.save();
 
-  return response.send('Cadastro realizado!');
+  return response.render('register', {
+    title: DEFAULT_TITLE,
+    message: 'Cliente cadastrado com sucesso!',
+  });
 }
 
 async function listUsers(request, response) {
@@ -34,4 +37,35 @@ async function listUsers(request, response) {
   });
 }
 
-module.exports = { add, index, listUsers };
+async function indexEdit(request, response) {
+  const { id } = request.query;
+
+  const user = await CustomersModel.findById(id);
+
+  return response.render('edit', {
+    title: 'Editar Cliente',
+    user,
+  });
+}
+
+async function edit(request, response) {
+  const { name, age, email } = request.body;
+
+  const { id } = request.params;
+
+  const user = await CustomersModel.findById(id);
+
+  user.name = name;
+  user.age = age;
+  user.email = email;
+
+  user.save();
+
+  return response.render('edit', {
+    title: 'Editar Cliente',
+    user,
+    message: 'Usuário alterado com Sucesso.',
+  });
+}
+
+module.exports = { add, index, listUsers, indexEdit, edit };

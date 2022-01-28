@@ -9,6 +9,7 @@
       <li>
         <strong><%= user.name %></strong>, <%= user.email %>, <%= user.age %>
         anos
+        <a href="/edit?id=<%= user._id %> ">[Editar]</a>
       </li>
       <% }) %>
     </ul>

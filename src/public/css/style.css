@@ -128,3 +128,9 @@ h1 {
 .list li + li {
   margin-top: 0.25rem;
 }
+
+.alert {
+  padding: 1rem;
+  background: rgb(63, 148, 63);
+  color: #e1e1e8;
+}

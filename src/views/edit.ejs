@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head.ejs') %>
+
+  <body>
+    <%- include('partials/navbar.ejs') %>
+
+    <form class="form" action="/edit/<%= user._id %> " method="POST">
+      <div>
+        <label for="">Nome</label>
+        <input
+          type="text"
+          name="name"
+          placeholder="Digite seu nome"
+          required
+          value="<%= user.name %>"
+        />
+      </div>
+
+      <div>
+        <label for="">Idade</label>
+        <input
+          type="text"
+          name="age"
+          placeholder="Digite sua idade"
+          required
+          value="<%= user.age %>"
+        />
+      </div>
+
+      <div>
+        <label for="">Email</label>
+        <input
+          type="text"
+          name="email"
+          placeholder="Digite seu email"
+          value="<%= user.email %>"
+          required
+        />
+      </div>
+
+      <button type="submit">Editar</button>
+    </form>
+
+    <% if (typeof message !== 'undefined' ) { %>
+    <span class="alert"> <%= message %> </span>
+    <% } %>
+
+    <!--  -->
+    <%- include('partials/foot.ejs') %>
+  </body>
+</html>
